@@ -1,10 +1,15 @@
 from django.contrib import admin
 
-from .models import Comment, Post, Upvote
+from .models import Comment, Post, PostImage, Upvote
 
 
 class CommentInline(admin.StackedInline):
     model = Comment
+    extra = 0
+
+
+class PostImageInline(admin.StackedInline):
+    model = PostImage
     extra = 0
 
 
@@ -30,6 +35,7 @@ class PostAdmin(admin.ModelAdmin):
                     "upvotes",
                     "author_name",
                     "title",
+                    "body",
                 )
             },
         ),
@@ -39,7 +45,4 @@ class PostAdmin(admin.ModelAdmin):
         "creation_date",
     ]
 
-    inlines = [CommentInline, UpvoteInline]
-
-
-admin.site.register(Upvote)
+    inlines = [PostImageInline, CommentInline, UpvoteInline]

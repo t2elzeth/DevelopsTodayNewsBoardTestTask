@@ -1,6 +1,7 @@
 # Uluk
 staticfiles/
 .idea/
+mediafiles/
 
 # Django #
 *.log

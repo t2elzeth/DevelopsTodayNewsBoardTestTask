@@ -3,7 +3,9 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = "django-insecure-mk1on+itrev!%qm8sj6sm9lrbxukvda3rj2we%&4c%=yp*^!x4"
+SECRET_KEY = (
+    "django-insecure-mk1on+itrev!%qm8sj6sm9lrbxukvda3rj2we%&4c%=yp*^!x4"
+)
 DEBUG = True
 
 ALLOWED_HOSTS = []
@@ -18,6 +20,7 @@ INSTALLED_APPS = [
     # Third party
     "rest_framework",
     "drf_yasg",
+    "django_extensions",
     # own
     "news",
 ]
@@ -52,25 +55,27 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "newsboard.wsgi.application"
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
-    }
-}
-
 AUTH_PASSWORD_VALIDATORS = [
     {
-        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
+        "NAME": (
+            "django.contrib.auth"
+            ".password_validation.UserAttributeSimilarityValidator"
+        ),
     },
     {
-        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
+        "NAME": (
+            "django.contrib.auth.password_validation.MinimumLengthValidator"
+        ),
     },
     {
-        "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
+        "NAME": (
+            "django.contrib.auth.password_validation.CommonPasswordValidator"
+        ),
     },
     {
-        "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
+        "NAME": (
+            "django.contrib.auth.password_validation.NumericPasswordValidator"
+        ),
     },
 ]
 
@@ -94,3 +99,14 @@ MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "mediafiles")
 
 DATETIME_FORMAT = "d M Y H:i:s"
+
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "postgres",
+        "USER": "t2elzeth",
+        "PASSWORD": "postgres",
+        "HOST": "db",
+        "PORT": 5432,
+    }
+}
